@@ -1,3 +1,3 @@
-# Kcoder
-Sitio web dedicado a recopilar el conocimiento en cuanto algoritmia y matematicas para difundirlo, especialmente aquellos interesados en la programacion competitiva
+# Algoritmolandia
+Sitio web dedicado a recopilar conocimiento en cuanto algoritmia y matematicas para difundirlo, especialmente entre aquellos interesados en la programacion competitiva.
 
