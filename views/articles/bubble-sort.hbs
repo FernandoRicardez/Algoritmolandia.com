@@ -1,87 +1,88 @@
 <h1>Bubble Sort(Ordenamiento Burbuja)</h1>
-El <b>bubble sort</b> o <b>ordenmiento burbuja</b> Es un algoritmo de ordenamiento considerdo basico por su facil implementacion, e intuicion.
-Sin embargo es tambien de los mas lentos teniendo complejidad $O(N^{2})$ aunque no usa memoria extra.
+El
+<b>bubble sort</b> o
+<b>ordenmiento burbuja</b> Es un algoritmo de ordenamiento considerado básico por su fácil implementación, e intuición. Sin
+embargo es también de los más lentos teniendo complejidad $O(N^{2})$, aunque no usa memoria extra.
 <br/>
 <br/>
-<h3>Explicacion</h3>
-<hr/>
-Digamos que tenemos un arreglo de enteros <FONT COLOR="gray">(aunque funciona para cualquier clase de datos)</FONT> \(A\) de tamaño $N$, si queremos ordenarlo de menor a mayor,
-lo que hace el bubble sort es muy parecido a el <a href="/selection-sort">Selection sort</a> sin embrgo es mas rapido el bubble sort con su version de validador. Pero que pasaria si en vez de buscar el mayor cada vez 
-antes de ordenarlo, lo fueramos "arrastrando" hasta su lugar. Esto se refiere a que mientras recorremos el arreglo, llevamos un mayor temporal y lo vamos recorriendo junto con 
-nosotros hasta que llegamos al lugar donde debe estar y repetimos el proceso hasta que todo este ordenado.
-<br/>
-Con un ejemplo estara mas claro:
+<h3>Explicación</h3>
+<hr/> Digamos que tenemos un arreglo de enteros
+<FONT COLOR="gray">(aunque funciona para cualquier clase de datos)</FONT> \(A\) de tamaño $N$, si queremos ordenarlo de menor a mayor, lo que
+hace el bubble sort es ir "arrastrando" cada número hasta su lugar. Esto se refiere a que mientras recorremos el arreglo,
+llevamos un mayor temporal y lo vamos recorriendo junto con nosotros hasta que llegamos al lugar donde debe estar y repetimos
+el proceso hasta que todo este ordenado.
+<br/> El siguiente ejemplo lo pondrá más claro:
 <br/>
 <br/>
 <div style="font-size:0.95em">
-Digamos que queremos ordenar el siguiente arreglo
-<br/>
-<br/>
-<table border>
-  <tr>
-    <td>8</td>
-    <td>3</td>
-    <td>4</td>
-    <td>7</td>
-    <td>9</td>
-    <td>2</td>
-  </tr>
-</table>
-<br/>
-Recorremos nuestro arreglo de izquierda a derecha empezando con el primer numero y al movernos a la siguiente posicion se compararan los dos numeros
-<br/>
-<br/>
-<table border="">
-  <tr>
-    <td><FONT COLOR="red">8</FONT></td>
-    <td>
-      <FONT COLOR="red">3</FONT>
-    </td>
-    <td>4</td>
-    <td>7</td>
-    <td>9</td>
-    <td>2</td>
-  </tr>
-</table>
-<br/>
-Y como 8 es el mayor de los dos lo intercambiamos con el 3
-<br/>
-<br/>
-<table border="">
-  <tr>
-    <td>
-      <FONT COLOR="red">3</FONT>
-    </td>
-    <td>
-      <FONT COLOR="red">8</FONT>
-    </td>
-    <td>4</td>
-    <td>7</td>
-    <td>9</td>
-    <td>2</td>
-  </tr>
-</table>
-<br/>
- Y ahora comparamos el 8 con el 4 y asi
- <br/>
-<br/>
-<table border="">
-  <tr>
-    <td>
-      3
-    </td>
-    <td>
-      <FONT COLOR="red">8</FONT>
-    </td>
-    <td>
-      <FONT COLOR="red">4</FONT>
-    </td>
-    <td>7</td>
-    <td>9</td>
-    <td>2</td>
-  </tr>
-</table>
-<br/>
+  Digamos que queremos ordenar el siguiente arreglo:
+  <br/>
+  <br/>
+  <table border>
+    <tr>
+      <td>8</td>
+      <td>3</td>
+      <td>4</td>
+      <td>7</td>
+      <td>9</td>
+      <td>2</td>
+    </tr>
+  </table>
+  <br/> Recorremos nuestro arreglo de izquierda a derecha empezando con el primer número y al movernos a la siguiente posición
+  se compararán los dos números
+  <br/>
+  <br/>
+  <table border="">
+    <tr>
+      <td>
+        <FONT COLOR="red">8</FONT>
+      </td>
+      <td>
+        <FONT COLOR="red">3</FONT>
+      </td>
+      <td>4</td>
+      <td>7</td>
+      <td>9</td>
+      <td>2</td>
+    </tr>
+  </table>
+  <br/> Y como 8 es el mayor de los dos lo intercambiamos con el 3,
+  <br/>
+  <br/>
+  <table border="">
+    <tr>
+      <td>
+        <FONT COLOR="red">3</FONT>
+      </td>
+      <td>
+        <FONT COLOR="red">8</FONT>
+      </td>
+      <td>4</td>
+      <td>7</td>
+      <td>9</td>
+      <td>2</td>
+    </tr>
+  </table>
+  <br/> Y ahora comparamos el 8 con el 4 y así seguimos.
+  <br/>
+  <br/>
+  <table border="">
+    <tr>
+      <td>
+        3
+      </td>
+      <td>
+        <FONT COLOR="red">8</FONT>
+      </td>
+      <td>
+        <FONT COLOR="red">4</FONT>
+      </td>
+      <td>7</td>
+      <td>9</td>
+      <td>2</td>
+    </tr>
+  </table>
+  <br/>
   <table border="">
     <tr>
       <td>
@@ -111,7 +112,7 @@ Y como 8 es el mayor de los dos lo intercambiamos con el 3
         <FONT COLOR="red">7</FONT>
       </td>
       <td>
-      <FONT COLOR="red">8</FONT>
+        <FONT COLOR="red">8</FONT>
       </td>
       <td>9</td>
       <td>2</td>
@@ -130,7 +131,7 @@ Y como 8 es el mayor de los dos lo intercambiamos con el 3
         7
       </td>
       <td>
-      <FONT COLOR="red">8</FONT>
+        <FONT COLOR="red">8</FONT>
       </td>
       <td>
         <FONT COLOR="red">9</FONT>
@@ -161,33 +162,33 @@ Y como 8 es el mayor de los dos lo intercambiamos con el 3
       </td>
     </tr>
   </table>
+  <br/> Y después volvemos a recorrer el arreglo deteniéndonos en una posición antes del final, ya que el 9 es el mayor de todos
+  y por lo tanto ya no se va a mover.
   <br/>
-  Y despues volvemos a recorrer el arreglo deteniendonos en una posicion antes del final, ya que el 9 es el mayor de todos y por lo tanto ya no se va a mover.
   <br/>
-<br/>
-<table border="">
-  <tr>
-    <td>
-      <FONT COLOR="red">3</FONT>
-    </td>
-    <td>
-      <FONT COLOR="red">4</FONT>
-    </td>
-    <td>
-      7
-    </td>
-    <td>
-      8
-    </td>
-    <td>
-      2
-    </td>
-    <td>
-      9
-    </td>
-  </tr>
-</table>
-<br/>
+  <table border="">
+    <tr>
+      <td>
+        <FONT COLOR="red">3</FONT>
+      </td>
+      <td>
+        <FONT COLOR="red">4</FONT>
+      </td>
+      <td>
+        7
+      </td>
+      <td>
+        8
+      </td>
+      <td>
+        2
+      </td>
+      <td>
+        9
+      </td>
+    </tr>
+  </table>
+  <br/>
   <table border="">
     <tr>
       <td>
@@ -256,8 +257,7 @@ Y como 8 es el mayor de los dos lo intercambiamos con el 3
       </td>
     </tr>
   </table>
-  <br/>
-  Repetimos el proceso otra vez, pero deteniendonos uno antes porque el 8 al igual que el 9 ya esta en su lugar.
+  <br/> Repetimos el proceso otra vez, pero deteniéndonos uno antes porque el 8 al igual que el 9 ya esta en su lugar.
   <br/>
   <br/>
   <table border="">
@@ -398,8 +398,7 @@ Y como 8 es el mayor de los dos lo intercambiamos con el 3
     </tr>
   </table>
   <br/>
-  <br/>
-  Y asi terminamos de ordenar nuestro arreglo
+  <br/> Y así terminamos de ordenar nuestro arreglo
 </div>
 <h3>Implementación</h3>
 <hr/>
@@ -417,8 +416,8 @@ Y como 8 es el mayor de los dos lo intercambiamos con el 3
          <span style='color:#406080; '>}</span>
     <span style='color:#406080; '>}</span>
 <span style='color:#406080; '>}</span>
-</pre>
-Una opcion si queremos hacer el algoritmo mas rapido es usando un validador para cuando el arreglo esta ordenado, esto se hace facilmente con una booleana
+</pre> Una opción si queremos hacer el algoritmo más rápido es usando un validador para cuando el arreglo esta ordenado, esto se
+hace fácilmente con una booleana
 <pre style='color:#000020;background:#f6f8ff;'><span style='color:#200080; font-weight:bold; '>int</span> n<span style='color:#308080; '>=</span><span style='color:#008c00; '>6</span><span style='color:#406080; '>;</span>
 <span style='color:#200080; font-weight:bold; '>int</span> arr<span style='color:#308080; '>[</span><span style='color:#008c00; '>6</span><span style='color:#308080; '>]</span><span style='color:#308080; '>=</span><span style='color:#406080; '>{</span><span style='color:#008c00; '>8</span><span style='color:#308080; '>,</span><span style='color:#008c00; '>3</span><span style='color:#308080; '>,</span><span style='color:#008c00; '>4</span><span style='color:#308080; '>,</span><span style='color:#008c00; '>7</span><span style='color:#308080; '>,</span><span style='color:#008c00; '>9</span><span style='color:#308080; '>,</span><span style='color:#008c00; '>2</span><span style='color:#406080; '>}</span>
 <span style='color:#200080; font-weight:bold; '>void</span> bubbleSort<span style='color:#308080; '>(</span><span style='color:#308080; '>)</span>
