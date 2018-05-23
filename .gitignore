@@ -62,3 +62,5 @@ typings/
 
 # firebase variables
 firebaseData.json
+
+jquery-ui-1.12.1.custom
