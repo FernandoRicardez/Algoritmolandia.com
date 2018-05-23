@@ -11,16 +11,16 @@
     
 
    <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-  });
-</script>
-  
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+  </script>
+    
 
-<script async type="text/javascript" 
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119540476-1"></script>
+  <script async type="text/javascript" 
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119540476-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -35,6 +35,8 @@
       enable_page_level_ads: true
     });
   </script>
+  
+    
   </head>
   <body>
        
@@ -59,7 +61,7 @@
         {{!-- <div class="col-4    "></div> --}}
         <div class="col-12 col-sm-8 col-md-6" >
           <form action="/buscar" class="SearchArea">
-            <input type="text" placeholder="Search.." name="search" class="searchBar">
+            <input id="searchBar" type="text" placeholder="Search.." name="search" class="searchBar">
             <button type="submit" class="searchButton ">
 <i class="fa fa-search"></i></button>
           </form>
@@ -68,7 +70,7 @@
           <center>
           <a href="https://www.youtube.com" class="social-icon"><i class="fab fa-youtube" style="font-size:1.7em"></i></a>
           <a href="https://www.facebook.com/Algoritmolandia" class="social-icon"><i class="fab fa-facebook" style="font-size:1.7em"></i></a>
-          <a href="https://www.github.com" class="social-icon"><i class="fab fa-github"   style="font-size:1.7em"></i></a>
+          <a href="https://github.com/FernandoRicardez/Algoritmolandia.com" class="social-icon"><i class="fab fa-github"   style="font-size:1.7em"></i></a>
           </center> 
         </div>
       </div>
@@ -169,10 +171,14 @@
     </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    {{!-- <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script> --}}
     <script  src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script async src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <script async src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-  
+    {{!-- <script src="/javascripts/jquery-ui-min.js"/> --}}
     
     <script>
         function showNavBar() {
@@ -190,11 +196,25 @@
         }
 });
     </script>
+    <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/idea.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 
-    
-    {{!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/languages/go.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script> --}}
-
+     {{!-- <script>
+  $( function() {
+    var availableTags = [
+      "selection-sort",
+      "insertion-sort",
+      "lazy-propagation"
+      
+    ];
+    $( "#searchBar" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  </script>
+   --}}
   
   </body>
 </html>
