@@ -19,7 +19,7 @@ var fireConfig = require('../firebaseData.json');
   /* GET home page. */
 
 router.get('/', function(req, res, next) {
-  res.render('index', { });
+  res.render('index', {title:'Algoritmolandia' });
 });
 
 
@@ -29,7 +29,7 @@ router.get('/feedback', function(req, res, next) {
 
 
 router.get('/articles', function(req, res, next) {
-  res.render('articles', { });
+  res.render('articles', {title:'articles' });
 });
 
 router.get('/:code', function(req, res, next) {
@@ -45,7 +45,7 @@ router.get('/:code', function(req, res, next) {
 
     q.on("value",function(snapshot) {
 
-    res.render('articles/'+urlCode, {show_tags:true, tag_info:snapshot.val(), isArticle:true});
+    res.render('articles/'+urlCode, {show_tags:true, tag_info:snapshot.val(), isArticle:true,title:urlCode});
     });
     
   });

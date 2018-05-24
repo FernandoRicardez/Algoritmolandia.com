@@ -137,6 +137,11 @@ body {
   background-color: #FAFAFA;
 
 }
+
+code {
+  
+border: 1px solid grey;
+}
 /* On small screens, set height to 'auto' for sidenav and grid */
 @media screen and (max-width: 767px) {
   body {

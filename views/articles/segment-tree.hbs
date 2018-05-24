@@ -1,5 +1,5 @@
 <h2>Segment Tree</h2>
-El <b>Segment tree</b> o <b>Árbol de segmentos</b> es una estructura de datos que permite realizar actualizaciones y consultas de rangos de forma rapida.
+El <b>Segment tree</b> o <b>Árbol de segmentos</b> es una estructura de datos que permite realizar actualizaciones y consultas de rangos de forma rápida.
 Esto lo logra mediante el uso de un árbol binario donde cada nodo representa un subrango.
 <br/>
 <br/>Funciona de forma de la raiz represente al rango completo, su hijo izquierdo a la mitad izquierda del rango, mientras que el derecho a la mitad derecha. En general, cada nodo representa la respuesta de un subrango y cada uno de sus dos hijos representan la mitad izquierda y derecha de dicho subrango.<br/>
@@ -26,19 +26,20 @@ Este problema puede ser resuelto de diferentes formas, una solucion sencilla es 
 A continuación se muestra dicho código.
 <br/>
 
-<pre style='color:#000000;background:#ffffff;'><span style='color:#000080; font-weight:bold; '>int</span> A<span style='color:#808030; '>[</span><span style='color:#008c00; '>10000</span><span style='color:#808030; '>]</span><span style='color:#000000; '>;</span>
+    <pre><code class="c++">
+    int A[10000];
 
-<span style='color:#000080; font-weight:bold; '>void</span> actualizar<span style='color:#808030; '>(</span><span style='color:#000080; font-weight:bold; '>int</span> i<span style='color:#808030; '>,</span> <span style='color:#000080; font-weight:bold; '>int</span> x<span style='color:#808030; '>)</span> <span style='color:#000000; '>{</span>
-    A<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span><span style='color:#808030; '>=</span>x<span style='color:#000000; '>;</span>
-<span style='color:#000000; '>}</span>
+    void actualizar(int i, int x) {
+        A[i]=x;
+    }
 
-<span style='color:#000080; font-weight:bold; '>int</span> calculaSuma<span style='color:#808030; '>(</span><span style='color:#000080; font-weight:bold; '>int</span> i<span style='color:#808030; '>,</span> <span style='color:#000080; font-weight:bold; '>int</span> j<span style='color:#808030; '>)</span> <span style='color:#000000; '>{</span>
-    <span style='color:#000080; font-weight:bold; '>int</span> res<span style='color:#808030; '>=</span><span style='color:#008c00; '>0</span><span style='color:#000000; '>;</span>
-    <span style='color:#000080; font-weight:bold; '>for</span> <span style='color:#808030; '>(</span><span style='color:#000080; font-weight:bold; '>int</span> k <span style='color:#808030; '>=</span>i<span style='color:#000000; '>;</span> k <span style='color:#808030; '>&lt;</span><span style='color:#808030; '>=</span> j<span style='color:#000000; '>;</span> k<span style='color:#808030; '>+</span><span style='color:#808030; '>+</span><span style='color:#808030; '>)</span>
-       res<span style='color:#808030; '>+</span><span style='color:#808030; '>=</span>A<span style='color:#808030; '>[</span>k<span style='color:#808030; '>]</span><span style='color:#000000; '>;</span>
-    <span style='color:#000080; font-weight:bold; '>return</span> res<span style='color:#000000; '>;</span>
-<span style='color:#000000; '>}</span>
-</pre>
+    int calculaSuma(int i, int j) {
+        int res=0;
+        for (int k =i; k <= j; k++)
+        res+=A[k];
+        return res;
+    }
+    </code> </pre>
 Sin embargo la complejidad de esto es:<br/>
  $O(1)$ para actualizar.<br/>
  $O(N)$ para calculaSuma, siendo $N$ el tamaño de $A$.<br/>
@@ -89,24 +90,26 @@ De forma de que para generar el indice del hijo izquierdo y derecho del nodo $n$
 <img style="max-width: 100%;" src="/images/articles/segmenttree/index-child.png">
 <br/>
 Entonces el código para construir el segment tree queda de la siguiente forma.
-<pre style='color:#000000;background:#ffffff;'><span style='color:#000080; font-weight:bold; '>int</span> A<span style='color:#808030; '>[</span><span style='color:#008c00; '>10000</span><span style='color:#808030; '>]</span><span style='color:#000000; '>;</span>
-<span style='color:#000080; font-weight:bold; '>int</span> ST<span style='color:#808030; '>[</span><span style='color:#008c00; '>20000</span><span style='color:#808030; '>]</span><span style='color:#000000; '>;</span>
+<pre><code class="c++">
+int A[10000];
+int ST[20000];
 
-<span style='color:#696969; '>//Genera el segment tree del arreglo A del rango [ini,fin]y lo guarda en ST [ind]</span>
-<span style='color:#000080; font-weight:bold; '>void</span> generarSegmentTree<span style='color:#808030; '>(</span><span style='color:#000080; font-weight:bold; '>int</span> ini<span style='color:#808030; '>,</span> <span style='color:#000080; font-weight:bold; '>int</span> fin<span style='color:#808030; '>,</span> <span style='color:#000080; font-weight:bold; '>int</span> ind<span style='color:#808030; '>)</span> <span style='color:#000000; '>{</span>
-    <span style='color:#000080; font-weight:bold; '>if</span> <span style='color:#808030; '>(</span>ini <span style='color:#808030; '>=</span><span style='color:#808030; '>=</span> fin<span style='color:#808030; '>)</span> <span style='color:#000000; '>{</span>
-        <span style='color:#696969; '>//Nos encontramos en una hoja, su valor es del arreglo A</span>
-        ST<span style='color:#808030; '>[</span>ind<span style='color:#808030; '>]</span><span style='color:#808030; '>=</span>A<span style='color:#808030; '>[</span>ini<span style='color:#808030; '>]</span><span style='color:#000000; '>;</span>
-        <span style='color:#000080; font-weight:bold; '>return</span><span style='color:#000000; '>;</span>
-    <span style='color:#000000; '>}</span>
-    <span style='color:#696969; '>//Generar el hijo izquierdo</span>
-    generarSegmentTree<span style='color:#808030; '>(</span>ini<span style='color:#808030; '>,</span> <span style='color:#808030; '>(</span>ini<span style='color:#808030; '>+</span>fin<span style='color:#808030; '>)</span><span style='color:#808030; '>/</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>,</span> <span style='color:#008c00; '>2</span><span style='color:#808030; '>*</span>ind<span style='color:#808030; '>+</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span><span style='color:#000000; '>;</span>
-    <span style='color:#696969; '>//Generar el hijo derecho</span>
-    generarSegmentTree<span style='color:#808030; '>(</span><span style='color:#808030; '>(</span>ini<span style='color:#808030; '>+</span>fin<span style='color:#808030; '>)</span><span style='color:#808030; '>/</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>+</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>,</span>fin<span style='color:#808030; '>,</span> <span style='color:#008c00; '>2</span><span style='color:#808030; '>*</span>ind<span style='color:#808030; '>+</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>)</span><span style='color:#000000; '>;</span>
-    <span style='color:#696969; '>//Combinar los dos hijos en nosotros, su padre</span>
-    ST<span style='color:#808030; '>[</span>ind<span style='color:#808030; '>]</span><span style='color:#808030; '>=</span>ST<span style='color:#808030; '>[</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>*</span>ind<span style='color:#808030; '>+</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>]</span><span style='color:#808030; '>+</span>ST<span style='color:#808030; '>[</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>*</span>ind<span style='color:#808030; '>+</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>]</span><span style='color:#000000; '>;</span>
-<span style='color:#000000; '>}</span>
-</pre>
+//Genera el segment tree del arreglo A del rango [ini,fin]y lo guarda en ST [ind]
+void generarSegmentTree(int ini, int fin, int ind) {
+    if (ini == fin) {
+        //Nos encontramos en una hoja, su valor es del arreglo A
+        ST[ind]=A[ini];
+        return;
+    }
+    //Generar el hijo izquierdo
+    generarSegmentTree(ini, (ini+fin)/2, 2*ind+1);
+    //Generar el hijo derecho
+    generarSegmentTree((ini+fin)/2+1,fin, 2*ind+2);
+    //Combinar los dos hijos en nosotros, su padre
+    ST[ind]=ST[2*ind+1]+ST[2*ind+2];
+}
+
+</code></pre>
 Todo lo anterior se realiza con una complejidad de $O(N)$.
 <br/>
 <br/> Una vez construido nuestro Segment tree realizar la operacion calculaSuma(i,j) es sencillo.
@@ -140,40 +143,40 @@ En base a los anterirores puntos podemos comenzar a buscar los puntos rojos con 
 </div>
 <br/>
 El codigo de lo anterior queda de la siguiente forma:
+<pre><code class="cpp">
+//Tamano de A
+int N;
+int A[10000];
+//El segment tree
+int ST[20000];
 
-<pre style='color:#000000;background:#ffffff;'><span style='color:#696969; '>//Tamano de A</span>
-<span style='color:#000080; font-weight:bold; '>int</span> N<span style='color:#000000; '>;</span>
-<span style='color:#000080; font-weight:bold; '>int</span> A<span style='color:#808030; '>[</span><span style='color:#008c00; '>10000</span><span style='color:#808030; '>]</span><span style='color:#000000; '>;</span>
-<span style='color:#696969; '>//El segment tree</span>
-<span style='color:#000080; font-weight:bold; '>int</span> ST<span style='color:#808030; '>[</span><span style='color:#008c00; '>20000</span><span style='color:#808030; '>]</span><span style='color:#000000; '>;</span>
+//Calcula la suma del rango [i,j]
+int calculaSuma(int i, int j) {
+  return buscaRojos(i, j, 0, N-1,0);
+}
 
-<span style='color:#696969; '>//Calcula la suma del rango [i,j]</span>
-<span style='color:#000080; font-weight:bold; '>int</span> calculaSuma<span style='color:#808030; '>(</span><span style='color:#000080; font-weight:bold; '>int</span> i<span style='color:#808030; '>,</span> <span style='color:#000080; font-weight:bold; '>int</span> j<span style='color:#808030; '>)</span> <span style='color:#000000; '>{</span>
-  <span style='color:#000080; font-weight:bold; '>return</span> buscaRojos<span style='color:#808030; '>(</span>i<span style='color:#808030; '>,</span> j<span style='color:#808030; '>,</span> <span style='color:#008c00; '>0</span><span style='color:#808030; '>,</span> N<span style='color:#808030; '>-</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>,</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>)</span><span style='color:#000000; '>;</span>
-<span style='color:#000000; '>}</span>
+//busca nodos rojos del rango [i,j] a partir del nodo ind que abarca el subrango [l,r]
+int buscaRojos(int i, int j, int l, int r, int ind) {
+   //El rango del nodo ind [l,r] esta perfectamente contenido en [i,j]
+   if (i <=l && r <=r) {
+      //Este nodo es rojo
+      return ST[ind];
+   }
 
-<span style='color:#696969; '>//busca nodos rojos del rango [i,j] a partir del nodo ind que abarca el subrango [l,r]</span>
-<span style='color:#000080; font-weight:bold; '>int</span> buscaRojos<span style='color:#808030; '>(</span><span style='color:#000080; font-weight:bold; '>int</span> i<span style='color:#808030; '>,</span> <span style='color:#000080; font-weight:bold; '>int</span> j<span style='color:#808030; '>,</span> <span style='color:#000080; font-weight:bold; '>int</span> l<span style='color:#808030; '>,</span> <span style='color:#000080; font-weight:bold; '>int</span> r<span style='color:#808030; '>,</span> <span style='color:#000080; font-weight:bold; '>int</span> ind<span style='color:#808030; '>)</span> <span style='color:#000000; '>{</span>
-   <span style='color:#696969; '>//El rango del nodo ind [l,r] esta perfectamente contenido en [i,j]</span>
-   <span style='color:#000080; font-weight:bold; '>if</span> <span style='color:#808030; '>(</span>i <span style='color:#808030; '>&lt;</span><span style='color:#808030; '>=</span>l <span style='color:#808030; '>&amp;</span><span style='color:#808030; '>&amp;</span> r <span style='color:#808030; '>&lt;</span><span style='color:#808030; '>=</span>r<span style='color:#808030; '>)</span> <span style='color:#000000; '>{</span>
-      <span style='color:#696969; '>//Este nodo es rojo</span>
-      <span style='color:#000080; font-weight:bold; '>return</span> ST<span style='color:#808030; '>[</span>ind<span style='color:#808030; '>]</span><span style='color:#000000; '>;</span>
-   <span style='color:#000000; '>}</span>
-
-   <span style='color:#000080; font-weight:bold; '>if</span> <span style='color:#808030; '>(</span>l <span style='color:#808030; '>></span> j <span style='color:#808030; '>|</span><span style='color:#808030; '>|</span> r <span style='color:#808030; '>&lt;</span> i<span style='color:#808030; '>)</span> <span style='color:#000000; '>{</span>
-      <span style='color:#696969; '>//El rango de este nodo esta completamente fuera de [i,j] nada de este subarbol es rojo;</span>
-      <span style='color:#000080; font-weight:bold; '>return</span> <span style='color:#008c00; '>0</span><span style='color:#000000; '>;</span><span style='color:#696969; '>//Usamos 0 porque es el neutro de la suma.</span>
-   <span style='color:#000000; '>}</span>
-   <span style='color:#696969; '>//Existe al menos un nodo rojo debajo, buscalos.</span>
-   <span style='color:#000080; font-weight:bold; '>int</span> izq <span style='color:#808030; '>=</span> buscaRojos<span style='color:#808030; '>(</span>i<span style='color:#808030; '>,</span>j<span style='color:#808030; '>,</span>l<span style='color:#808030; '>,</span><span style='color:#808030; '>(</span>l<span style='color:#808030; '>+</span>r<span style='color:#808030; '>)</span><span style='color:#808030; '>/</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>,</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>*</span>ind<span style='color:#808030; '>+</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span><span style='color:#000000; '>;</span>
-   <span style='color:#000080; font-weight:bold; '>int</span> der <span style='color:#808030; '>=</span> buscaRojos<span style='color:#808030; '>(</span>i<span style='color:#808030; '>,</span>j<span style='color:#808030; '>,</span><span style='color:#808030; '>(</span>l<span style='color:#808030; '>+</span>r<span style='color:#808030; '>)</span><span style='color:#808030; '>/</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>+</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>,</span>r<span style='color:#808030; '>,</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>*</span>ind<span style='color:#808030; '>+</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>)</span><span style='color:#000000; '>;</span>
-   <span style='color:#000080; font-weight:bold; '>return</span> izq<span style='color:#808030; '>+</span>der<span style='color:#000000; '>;</span>
-<span style='color:#000000; '>}</span>
-</pre>
+   if (l > j || r < i) {
+      //El rango de este nodo esta completamente fuera de [i,j] nada de este subarbol es rojo;
+      return 0;//Usamos 0 porque es el neutro de la suma.
+   }
+   //Existe al menos un nodo rojo debajo, buscalos.
+   int izq = buscaRojos(i,j,l,(l+r)/2,2*ind+1);
+   int der = buscaRojos(i,j,(l+r)/2+1,r,2*ind+2);
+   return izq+der;
+}
+    </code></pre>
 Si analizamos este algoritmo, se puede observar que por nivel, a lo más probaremos cuatro nodos, ya que de lo contrario romperiamos la regla de los nodos rojos. <br/>
 Por esto, y por que solo hay $O(log\ N)$ niveles, decimos que este algoritmo tiene complejidad $O(log\ N)$.
 <br/>
-La demostración de lo anterior se deja como ejercicio al lector.
+
 
 <h3>Actualizaciones al arreglo</h3>
 <hr>
@@ -186,37 +189,38 @@ alt="image" />
 Entonces cada ves que actualizemos una posición en el arreglo, podemos buscar con recursión el nodo [i,i], modificar su valor y de abaho hacia arriba ir recalculando los nodos amarillos.
 <br/>
 El codigo de esta idea queda:
-<pre style='color:#000000;background:#ffffff;'><span style='color:#696969; '>//Tamano del arreglo A</span>
-<span style='color:#000080; font-weight:bold; '>int</span> N<span style='color:#000000; '>;</span>
-<span style='color:#000080; font-weight:bold; '>int</span> A<span style='color:#808030; '>[</span><span style='color:#008c00; '>10000</span><span style='color:#808030; '>]</span><span style='color:#000000; '>;</span>
-<span style='color:#696969; '>//Segment tree</span>
-<span style='color:#000080; font-weight:bold; '>int</span> ST<span style='color:#808030; '>[</span><span style='color:#008c00; '>20000</span><span style='color:#808030; '>]</span><span style='color:#000000; '>;</span>
+<pre><code class="cpp">
+//Tamano del arreglo A
+int N;
+int A[10000];
+//Segment tree
+int ST[20000];
 
-<span style='color:#000080; font-weight:bold; '>void</span> actualizar<span style='color:#808030; '>(</span><span style='color:#000080; font-weight:bold; '>int</span> i<span style='color:#808030; '>,</span> <span style='color:#000080; font-weight:bold; '>int</span> x<span style='color:#808030; '>)</span> <span style='color:#000000; '>{</span>
-    caminoAmarillo<span style='color:#808030; '>(</span>i<span style='color:#808030; '>,</span>x<span style='color:#808030; '>,</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>,</span>N<span style='color:#808030; '>-</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>,</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>)</span><span style='color:#000000; '>;</span>
-<span style='color:#000000; '>}</span>
+void actualizar(int i, int x) {
+    caminoAmarillo(i,x,0,N-1,0);
+}
 
-<span style='color:#696969; '>//Recorre el camino amarillo para cambiar el nodo [i,i] al valor x, desde el nodo [l,r] con indice ind en ST</span>
-<span style='color:#000080; font-weight:bold; '>void</span> caminoAmarillo<span style='color:#808030; '>(</span><span style='color:#000080; font-weight:bold; '>int</span> i<span style='color:#808030; '>,</span> <span style='color:#000080; font-weight:bold; '>int</span> x<span style='color:#808030; '>,</span> <span style='color:#000080; font-weight:bold; '>int</span> l<span style='color:#808030; '>,</span> <span style='color:#000080; font-weight:bold; '>int</span> r<span style='color:#808030; '>,</span> <span style='color:#000080; font-weight:bold; '>int</span> ind<span style='color:#808030; '>)</span> <span style='color:#000000; '>{</span>
-   <span style='color:#696969; '>//Estamos en una hoja, y por lo tanto en [i,i] </span>
-   <span style='color:#000080; font-weight:bold; '>if</span> <span style='color:#808030; '>(</span>l<span style='color:#808030; '>=</span><span style='color:#808030; '>=</span>r<span style='color:#808030; '>)</span> <span style='color:#000000; '>{</span>
-      ST<span style='color:#808030; '>[</span>ind<span style='color:#808030; '>]</span><span style='color:#808030; '>=</span>x<span style='color:#000000; '>;</span>
-      <span style='color:#000080; font-weight:bold; '>return</span><span style='color:#000000; '>;</span>
-   <span style='color:#000000; '>}</span>
-   <span style='color:#696969; '>//calculamos la mitad del rango</span>
-   <span style='color:#000080; font-weight:bold; '>int</span> mid <span style='color:#808030; '>=</span><span style='color:#808030; '>(</span>l<span style='color:#808030; '>+</span>r<span style='color:#808030; '>)</span><span style='color:#808030; '>/</span><span style='color:#008c00; '>2</span><span style='color:#000000; '>;</span>
+//Recorre el camino amarillo para cambiar el nodo [i,i] al valor x, desde el nodo [l,r] con indice ind en ST
+void caminoAmarillo(int i, int x, int l, int r, int ind) {
+   //Estamos en una hoja, y por lo tanto en [i,i] 
+   if (l==r) {
+      ST[ind]=x;
+      return;
+   }
+   //calculamos la mitad del rango
+   int mid =(l+r)/2;
     
-   <span style='color:#000080; font-weight:bold; '>if</span> <span style='color:#808030; '>(</span>i <span style='color:#808030; '>&lt;</span><span style='color:#808030; '>=</span> mid<span style='color:#808030; '>)</span> <span style='color:#000000; '>{</span>
-       <span style='color:#696969; '>//El nodo[i,i] pertenece al hijo izquierdo</span>
-       caminoAmarillo<span style='color:#808030; '>(</span>i<span style='color:#808030; '>,</span>x<span style='color:#808030; '>,</span>l<span style='color:#808030; '>,</span>mid<span style='color:#808030; '>,</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>*</span>ind<span style='color:#808030; '>+</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span><span style='color:#000000; '>;</span>
-   <span style='color:#000000; '>}</span> <span style='color:#000080; font-weight:bold; '>else</span> <span style='color:#000000; '>{</span>
-       <span style='color:#696969; '>//El nodo[i,i] pertenece al hijo derecho</span>
-       caminoAmarillo<span style='color:#808030; '>(</span>i<span style='color:#808030; '>,</span>x<span style='color:#808030; '>,</span>mid<span style='color:#808030; '>+</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>,</span>r<span style='color:#808030; '>,</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>*</span>ind<span style='color:#808030; '>+</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>)</span><span style='color:#000000; '>;</span>
-   <span style='color:#000000; '>}</span>
-   <span style='color:#696969; '>//Recalcular ST[ind]</span>
-   ST<span style='color:#808030; '>[</span>ind<span style='color:#808030; '>]</span><span style='color:#808030; '>=</span>ST<span style='color:#808030; '>[</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>*</span>ind<span style='color:#808030; '>+</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>]</span><span style='color:#808030; '>+</span>ST<span style='color:#808030; '>[</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>*</span>ind<span style='color:#808030; '>+</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>]</span><span style='color:#000000; '>;</span>
-<span style='color:#000000; '>}</span>
-</pre>
+   if (i <= mid) {
+       //El nodo[i,i] pertenece al hijo izquierdo
+       caminoAmarillo(i,x,l,mid,2*ind+1);
+   } else {
+       //El nodo[i,i] pertenece al hijo derecho
+       caminoAmarillo(i,x,mid+1,r,2*ind+2);
+   }
+   //Recalcular ST[ind]
+   ST[ind]=ST[2*ind+1]+ST[2*ind+2];
+}
+</code></pre>
 
 Podemos ver que la complejidad de esto es $O(log\ N)$, ya que tenemos aproximadamente $log\ N$ niveles, y en cada llamda recursiva bajamos un nivel.
 <h3>Otros usos del Segment Tree</h3>
