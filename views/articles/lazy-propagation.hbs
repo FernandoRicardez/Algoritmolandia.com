@@ -1,11 +1,23 @@
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "TechArticle",
+  "description": "Técninca de optimización para segment tree",
+  "name": "Segment tree -Lazy propagation",
+  "headline":"Lazy propagation",
+  "inLanguage":"es-xl",
+  "keywords":"árbol,segmento,lazy,propagation,segment,tree,propagacion,optimización,español"
+}
+</script>
+
 <h2>Lazy propagation</h2>
-<b>Lazy propagation</b> es una tecnica de optimización para segment tree. 
+<b>Lazy propagation</b> es una técnica de optimización para segment tree. 
 <br/>
-Recordando lo antes visto en <a href="/segment-tree">segment tree</a>, las consultas y actualizaciones  toman complejidad $O(log\ N)$.
+Recordando lo antes visto en <a href="/segment-tree">segment tree</a>, las consultas y actualizaciones toman complejidad $O(log\ N)$.
 <br>
-Pero existe una actualizacion que todavia es lenta. La actualización de rango.
+Pero existe una actualización que todavía es lenta. La actualización de rango.
 <br>
-Por ello para optimizarlo buscaremos los nodos de la descomposición fundamental( nodos rojos en la leccion del segment tree) y dejaremos alli una marca de que dejamos pendiente una actualización, para que cuando sea necesario, mover la marca a sus hijos.
+Por ello para optimizarlo buscaremos los nodos de la descomposición fundamental (nodos rojos en la lección del segment tree) y dejaremos allí una marca de que dejamos pendiente una actualización, para que cuando sea necesario, mover la marca a sus hijos.
 <br>
 <br>
 Para entenderlo mejor, veremos un problema.
@@ -14,10 +26,10 @@ Para entenderlo mejor, veremos un problema.
 Tenemos un arreglo $A$ de tamaño $N$, queremos poder realizar las siguientes operaciones:
 <div class="tabuled-area">
     <li>sumar(i, j, x), a todos los valores de $A_k$ que cumplan $i\leq k \leq j$, sumarle $x$</li>
-    <li>maximoEntre(i, j), obtener el maximo valor $A_k$ que cumpla: $i\leq k \leq j$</li>
+    <li>maximoEntre(i, j), obtener el máximo valor $A_k$ que cumpla: $i\leq k \leq j$</li>
 </div>
 <br>
-La solucion sencilla, seria guardar el arreglo $A$ de forma normal y realizar las operaciones con ciclos, el codigo queda:
+La solución sencilla, seria guardar el arreglo $A$ de forma normal y realizar las operaciones con ciclos, el codigo queda:
 <pre style='color:#000000;background:#ffffff;'><span style='color:#000080; font-weight:bold; '>int</span> A<span style='color:#808030; '>[</span><span style='color:#008c00; '>10000</span><span style='color:#808030; '>]</span><span style='color:#000000; '>;</span>
 
 <span style='color:#000080; font-weight:bold; '>void</span> sumar<span style='color:#808030; '>(</span><span style='color:#000080; font-weight:bold; '>int</span> i<span style='color:#808030; '>,</span> <span style='color:#000080; font-weight:bold; '>int</span> j<span style='color:#808030; '>,</span> <span style='color:#000080; font-weight:bold; '>int</span> x<span style='color:#808030; '>)</span> <span style='color:#000000; '>{</span>
@@ -342,4 +354,4 @@ Entonces llamamos esa funcion en las consultas y actualizaciones, dejandonos el 
    <span style='color:#000080; font-weight:bold; '>return</span> <span style='color:#603000; '>max</span><span style='color:#808030; '>(</span>izq<span style='color:#808030; '>,</span>der<span style='color:#808030; '>)</span><span style='color:#000000; '>;</span>
 <span style='color:#000000; '>}</span>
 </pre>
-Todo esto reduce la complejidad de sumar(i, j, x) a $O(log\ N)$, permitiendo realizar todas estas operaciones de forma rapida. Pero hay que notar que no a todas las operaciones se les puede aplicar lazy propagation, por ejemplo sumas de rango con preguntas de minimo comun multiplo no funciona.
+Todo esto reduce la complejidad de sumar (i, j, x) a $O(log\ N)$, permitiendo realizar todas estas operaciones de forma rápida. Pero hay que notar que no a todas las operaciones se les puede aplicar lazy propagation, por ejemplo, sumas de rango con preguntas de mínimo común múltiplo no funciona.

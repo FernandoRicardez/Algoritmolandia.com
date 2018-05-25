@@ -1,13 +1,13 @@
 <h1>Selection Sort</h1>
 El <b>selection sort</b> es un algoritmo de ordenamiento considerado entre los más básicos, debido a su complejidad $O(N^{2})$ y a que tener la idea de como hacerlo es relativamente
-facil ya que es la manera por la que en general ordenamos en la vida real. Segín su implimentación puede usar un arreglo extra de memoria.
+fácil ya que es la manera por la que en general ordenamos en la vida real. Según su implementación puede usar un arreglo extra de memoria.
 <br/>
 <br/>
 <h3>Explicación</h3>
 <hr/>
 Digamos que tenemos un arreglo de enteros <FONT COLOR="gray">(aunque funciona para cualquier clase de datos)</FONT> \(A\) de tamaño $N$, el cual queremos ordenar de menor a mayor,
-este algoritmo lo hace de la siguiente manera: Elegue el menor numero de los numeros de la lista, y lo ordena en un arreglo aparte, y despues el siguiente, y asi hasta que ordena
-todos los numeros del arreglo. Por ejemplo digamaos que queremoms ordenr el arreglo {8,3,4,7,9,2}
+este algoritmo lo hace de la siguiente manera: Elije el menor número de los números de la lista, y lo ordena en un arreglo aparte, y después el siguiente, y así hasta que ordena
+todos los números del arreglo. Por ejemplo, digamos que queremos ordenar el arreglo {8,3,4,7,9,2}
 <br/>
 <br/>
 <table border="">
@@ -21,7 +21,7 @@ todos los numeros del arreglo. Por ejemplo digamaos que queremoms ordenr el arre
   </tr>
 </table>
 <br/>
-primero buscamos en todo el arreglo el  menor.
+primero buscamos en todo el arreglo el número menor.
 <br/>
 <br/>
 <table border="">
@@ -37,7 +37,7 @@ primero buscamos en todo el arreglo el  menor.
   </tr>
 </table>
 <br/>
-y lo metemos en  un arreglo vacio
+y lo metemos en un arreglo vacío
 <br/>
 <table border="">
   <tr>
@@ -51,7 +51,7 @@ y lo metemos en  un arreglo vacio
     <td>&nbsp;&nbsp;</td>
   </tr>
 </table>
-despues repetimos ignorando el 2 y asi hasta ordenar todos los numeros.
+después repetimos ignorando el 2 y así hasta ordenar todos los números.
 <br/>
 <table border="">
   <tr>
@@ -260,7 +260,7 @@ despues repetimos ignorando el 2 y asi hasta ordenar todos los numeros.
         arr<span style='color:#308080; '>[</span>i<span style='color:#308080; '>]</span><span style='color:#308080; '>=</span>arr<span style='color:#308080; '>[</span><span style='color:#008c00; '>2</span><span style='color:#308080; '>]</span>                         <span style='color:#595979; '>//copiamos el arreglo ordenado al original</span>
 <span style='color:#406080; '>}</span>
 </pre>
-una implementacion alterntiva para este algoritmo es la siguiente aunque no es tan intituiva, con la ventaja de que no requiere memoria extra ya que lo ordena en el mismo arreglo en las primeras posiciones de este.
+una implementación alternativa para este algoritmo es la siguiente aunque no es tan intuitiva, con la ventaja de que no requiere memoria extra ya que lo ordena en el mismo arreglo en las primeras posiciones de este.
 <br/>
 <pre style='color:#000020;background:#f6f8ff;'><span style='color:#200080; font-weight:bold; '>int</span> n<span style='color:#308080; '>=</span><span style='color:#008c00; '>6</span><span style='color:#406080; '>;</span>
 <span style='color:#200080; font-weight:bold; '>int</span> arr<span style='color:#308080; '>[</span><span style='color:#008c00; '>6</span><span style='color:#308080; '>]</span><span style='color:#308080; '>=</span><span style='color:#406080; '>{</span><span style='color:#008c00; '>8</span><span style='color:#308080; '>,</span><span style='color:#008c00; '>3</span><span style='color:#308080; '>,</span><span style='color:#008c00; '>4</span><span style='color:#308080; '>,</span><span style='color:#008c00; '>7</span><span style='color:#308080; '>,</span><span style='color:#008c00; '>9</span><span style='color:#308080; '>,</span><span style='color:#008c00; '>2</span><span style='color:#406080; '>}</span>
